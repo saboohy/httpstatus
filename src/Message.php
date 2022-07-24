@@ -12,6 +12,14 @@ namespace Saboohy\HttpStatus
 
     use function \isset;
 
+    /**
+     * Message shower class by http status code
+     * 
+     * @package     Saboohy\HttpStatus
+     * @subpackage  Message
+     * @author      Sabuhi Alizada <sabuhi.alizada@yahoo.com>
+     * @license     MIT
+     */
     class Message
     {
         /**
