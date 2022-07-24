@@ -1,0 +1,33 @@
+{
+    "name": "saboohy/httpstatus",
+    "type": "library",
+    "license": "MIT",
+    "description": "Http status library",
+    "keywords": [
+        "php",
+        "header",
+        "http",
+        "status",
+        "code"
+    ],
+    "authors": [
+        {
+            "name": "Sabuhi Alizada",
+            "email": "sabuhi.alizada@yahoo.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Saboohy\\HttpStatus\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Saboohy\\HttpStatus\\Tests\\": "tests/"
+        }
+    }
+}
