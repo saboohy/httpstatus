@@ -30,7 +30,7 @@ namespace Saboohy\HttpStatus
         private static array $messages = [
 
             /* Default */
-            0 => "Status not found",
+            0 => "Status Not Found",
 
             /* Informational */
             100 => "Continue",
@@ -113,12 +113,7 @@ namespace Saboohy\HttpStatus
          */
         public static function get(int $code): string
         {
-            $code = (
-                isset(self::$messages[$code])
-                ? self::$messages[$code]
-                : 0
-            );
-
+            $code = isset(self::$messages[$code]) ? $code : 0;
             return self::$messages[$code];
         }
     }
