@@ -14,6 +14,14 @@ namespace Saboohy\HttpStatus\Tests
 
     final class GeneralTest extends TestCase
     {
+        public function testDefault(): void
+        {
+            $this->assertSame(
+                Message::get(0),
+                "Status Not Found"
+            );
+        }
+
         public function testInfoStatus(): void
         {
             $this->assertSame(Info::CONTINUE, 100);
