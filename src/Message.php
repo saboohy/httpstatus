@@ -29,6 +29,9 @@ namespace Saboohy\HttpStatus
          */
         private static array $messages = [
 
+            /* Default */
+            0 => "Status not found",
+
             /* Informational */
             100 => "Continue",
             101 => "Switching Protocols",
@@ -110,9 +113,11 @@ namespace Saboohy\HttpStatus
          */
         public static function get(int $code): string
         {
-            if ( !isset(self::$messages[$code]) ) {
-                throw new \Exception('!!!');
-            }
+            $code = (
+                isset(self::$messages[$code])
+                ? self::$messages[$code]
+                : 0
+            );
 
             return self::$messages[$code];
         }
