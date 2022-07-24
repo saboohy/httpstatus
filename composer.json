@@ -2,7 +2,7 @@
     "name": "saboohy/httpstatus",
     "type": "library",
     "license": "MIT",
-    "description": "Http status library",
+    "description": "The Library for HTTP Status Codes, Messages and Exception",
     "keywords": [
         "php",
         "header",
@@ -29,5 +29,8 @@
         "psr-4": {
             "Saboohy\\HttpStatus\\Tests\\": "tests/"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }
