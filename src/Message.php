@@ -109,7 +109,6 @@ namespace Saboohy\HttpStatus
          * @param string $code
          * 
          * @return string
-         * @throws \Exception
          */
         public static function get(int $code): string
         {
