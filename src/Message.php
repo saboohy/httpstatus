@@ -10,8 +10,6 @@ namespace Saboohy\HttpStatus
         Success
     };
 
-    use function \isset;
-
     /**
      * Message shower class by http status code
      * 
