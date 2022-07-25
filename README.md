@@ -24,4 +24,4 @@ echo Message::get(Success::OK);
 
 ## License
 
-The MIT License (MIT). Pleace see [License File](LICENSE) for more information.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
