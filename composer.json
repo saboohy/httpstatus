@@ -23,7 +23,7 @@
         }
     },
     "require": {
-        "php": ">=8.0"
+        "php": ">=7.4"
     },
     "autoload-dev": {
         "psr-4": {
