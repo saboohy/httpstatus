@@ -23,6 +23,12 @@ namespace Saboohy\HttpStatus
          */
         public function __construct(int $http_status_code)
         {
+            $http_status_code = (
+                ($http_status_code >= 300 && $http_status_code <= 500) 
+                ? $http_status_code 
+                : 0
+            );
+            
             $message = Message::get($http_status_code);
             parent::__construct($message, $http_status_code);
         }
