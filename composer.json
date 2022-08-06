@@ -3,6 +3,7 @@
     "type": "library",
     "license": "MIT",
     "description": "The Library for HTTP Status Codes, Messages and Exception",
+    "readme": "https://github.com/saboohy/httpstatus/blob/main/README.md",
     "keywords": [
         "php",
         "header",
