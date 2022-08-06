@@ -24,7 +24,7 @@ class HttpErrorException extends \Exception
     public function __construct(int $http_status_code)
     {
         $http_status_code = (
-            ($http_status_code >= 300 && $http_status_code <= 500) 
+            ($http_status_code >= 400 && $http_status_code < 600) 
             ? $http_status_code 
             : 0
         );
