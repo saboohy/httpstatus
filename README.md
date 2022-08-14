@@ -31,7 +31,7 @@ The **HttpStatus** package is arranged from 3 types of classes. Classes expressi
 
 ### Informational Responses (1xx)
 
-Constants for informational responses are organized inside of "Info" class. You can use the class for status codes 100, 101, 102, and 103.
+Constants for informational responses are organized inside of `Info` class. You can use the class for status codes 100, 101, 102 and 103.
 
 #### Constants
 
@@ -40,7 +40,7 @@ Constants for informational responses are organized inside of "Info" class. You 
 | CONTINUE            | 100  |
 | SWITCHING_PROTOCOLS | 101  |
 | PROCESSING          | 102  |
-| EARLY_HINTS         | 203  |
+| EARLY_HINTS         | 103  |
 
 #### Usage
 
@@ -52,7 +52,7 @@ echo Info::CONTINUE;
 
 ### Successful Responses (2xx)
 
-Successful responses are organized inside of "Success" class. You can use the class for status codes 200, 201, 202, 203, 204, 205, 206, 207, 208 and 226.
+Successful responses are organized inside of `Success` class. You can use the class for status codes 200, 201, 202, 203, 204, 205, 206, 207, 208 and 226.
 
 #### Constants
 
@@ -80,7 +80,7 @@ echo Success::OK;
 
 ### Redirection Messages (3xx)
 
-Redirect responses are organized inside of "Redirect" class. You can use the class for status codes 300, 301, 302, 303, 304, 307 and 308.
+Redirect responses are organized inside of `Redirect` class. You can use the class for status codes 300, 301, 302, 303, 304, 307 and 308.
 
 #### Constants
 
@@ -104,7 +104,7 @@ echo Redirect::MULTIPLE_CHOICES;
 
 ### Client Error Responses (4xx)
 
-Constants for client error responses are organized inside of "Client" class. You can use the class for status codes 400, 401, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 421, 422, 423, 424, 425, 426, 428, 429, 431 and 451.
+Constants for client error responses are organized inside of `Client` class. You can use the class for status codes 400, 401, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 421, 422, 423, 424, 425, 426, 428, 429, 431 and 451.
 
 #### Constants
 
@@ -149,7 +149,7 @@ echo Client::BAD_REQUEST;
 
 ### Server Error Responses (5xx)
 
-Constants for server error responses are organized inside of "Server" class. You can use the class for status codes 500, 501, 502, 503, 504, 505, 506, 507, 508 və 510, 511.
+Constants for server error responses are organized inside of `Server` class. You can use the class for status codes 500, 501, 502, 503, 504, 505, 506, 507, 508, 510 and 511.
 
 #### Constants
 
@@ -178,7 +178,7 @@ echo Server::INTERNAL_SERVER_ERROR;
 
 ### Message
 
-"Message" class is used to receive the HTTP messages. It is possible to receive messages using the constants mentioned above to the `get` method present in it. The `get` method is **static**, takes a value of type integer and returns a result of type string. If any number not inside of the HTTP statuses is used, it will receive `0` and the equivalent of this value will be ``Status Not Found''.
+"Message" class is used to receive the HTTP messages. It is possible to receive messages using the constants mentioned above to the `get` method present in it. The `get` method is **static**, takes a value of type integer and returns a result of type string. If any number not inside of the HTTP statuses is used, it will receive `0` and the equivalent of this value will be **"Status Not Found"**.
 
 #### Usage
 
