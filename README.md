@@ -203,4 +203,4 @@ throw new HttpErrorException(Client::NOT_FOUND);
 
 ## License
 
-The MIT License (MIT). Please, look at [License File](LICENSE) for more information.
+The MIT License (MIT). Please, look at [License File](LICENSE.md) for more information.
