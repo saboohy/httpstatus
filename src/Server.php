@@ -23,4 +23,6 @@ final class Server
     public const LOOP_DETECTED = 508;
     public const NOT_EXTENDED = 510;
     public const NETWORK_AUTHENTICATION_REQUIRED = 511;
+    public const NETWORK_READ_TIMEOUT_ERROR = 598;
+    public const NETWORK_CONNECT_TIMEOUT_ERROR = 599;
 }
