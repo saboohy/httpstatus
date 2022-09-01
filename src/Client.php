@@ -40,4 +40,5 @@ final class Client
     public const TOO_MANY_REQUESTS = 429;
     public const REQUEST_HEADER_FIELDS_TOO_LARGE = 431;
     public const UNAVAILABLE_FOR_LEGAL_REASONS = 451;
+    public const CLIENT_CLOSED_REQUEST = 499;
 }
