@@ -86,6 +86,7 @@ class Message
         429 => "Too Many Requests",
         431 => "Request Header Fields Too Large",
         451 => "Unavailable For Legal Reasons",
+        499 => "Client Closed Request",
 
         /* Server errors */
         500 => "Internal Server Error",
@@ -98,7 +99,9 @@ class Message
         507 => "Insufficient Storage",
         508 => "Loop Detected",
         510 => "Not Extended",
-        511 => "Network Authentication Required"
+        511 => "Network Authentication Required",
+        598 => "Network read timeout error",
+        599 => "Network connect timeout error"
     ];
 
     /**
