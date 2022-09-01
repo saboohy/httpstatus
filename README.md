@@ -138,6 +138,7 @@ Constants for client error responses are organized inside of `Client` class. You
 | TOO_MANY_REQUESTS               | 429  |
 | REQUEST_HEADER_FIELDS_TOO_LARGE | 431  |
 | UNAVAILABLE_FOR_LEGAL_REASONS   | 451  |
+| CLIENT_CLOSED_REQUEST           | 499  |
 
 #### Usage
 
@@ -166,6 +167,8 @@ Constants for server error responses are organized inside of `Server` class. You
 | LOOP_DETECTED                   | 508  |
 | NOT_EXTENDED                    | 510  |
 | NETWORK_AUTHENTICATION_REQUIRED | 511  |
+| NETWORK_READ_TIMEOUT_ERROR      | 598  |
+| NETWORK_CONNECT_TIMEOUT_ERROR   | 599  |
 
 
 #### Usage
