@@ -144,6 +144,7 @@ namespace Saboohy\HttpStatus\Tests
             $this->assertSame(Client::TOO_MANY_REQUESTS, 429);
             $this->assertSame(Client::REQUEST_HEADER_FIELDS_TOO_LARGE, 431);
             $this->assertSame(Client::UNAVAILABLE_FOR_LEGAL_REASONS, 451);
+            $this->assertSame(Client::CLIENT_CLOSED_REQUEST, 499);
 
             $this->assertSame(
                 Message::get(Client::BAD_REQUEST),
@@ -284,6 +285,11 @@ namespace Saboohy\HttpStatus\Tests
                 Message::get(Client::UNAVAILABLE_FOR_LEGAL_REASONS),
                 "Unavailable For Legal Reasons"
             );
+
+            $this->assertSame(
+                Message::get(Client::CLIENT_CLOSED_REQUEST),
+                "Client Closed Request"
+            );
         }
 
         public function testServerStatus(): void
@@ -299,6 +305,8 @@ namespace Saboohy\HttpStatus\Tests
             $this->assertSame(Server::LOOP_DETECTED, 508);
             $this->assertSame(Server::NOT_EXTENDED, 510);
             $this->assertSame(Server::NETWORK_AUTHENTICATION_REQUIRED, 511);
+            $this->assertSame(Server::NETWORK_READ_TIMEOUT_ERROR, 598);
+            $this->assertSame(Server::NETWORK_CONNECT_TIMEOUT_ERROR, 599);
 
             $this->assertSame(
                 Message::get(Server::INTERNAL_SERVER_ERROR),
@@ -353,6 +361,16 @@ namespace Saboohy\HttpStatus\Tests
             $this->assertSame(
                 Message::get(Server::NETWORK_AUTHENTICATION_REQUIRED),
                 "Network Authentication Required"
+            );
+
+            $this->assertSame(
+                Message::get(Server::NETWORK_READ_TIMEOUT_ERROR),
+                "Network read timeout error"
+            );
+
+            $this->assertSame(
+                Message::get(Server::NETWORK_CONNECT_TIMEOUT_ERROR),
+                "Network connect timeout error"
             );
         }
     }
