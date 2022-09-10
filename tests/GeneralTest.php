@@ -365,12 +365,12 @@ namespace Saboohy\HttpStatus\Tests
 
             $this->assertSame(
                 Message::get(Server::NETWORK_READ_TIMEOUT_ERROR),
-                "Network read timeout error"
+                "Network Read Timeout Error"
             );
 
             $this->assertSame(
                 Message::get(Server::NETWORK_CONNECT_TIMEOUT_ERROR),
-                "Network connect timeout error"
+                "Network Connect Timeout Error"
             );
         }
     }
