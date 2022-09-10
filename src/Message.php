@@ -100,8 +100,8 @@ class Message
         508 => "Loop Detected",
         510 => "Not Extended",
         511 => "Network Authentication Required",
-        598 => "Network read timeout error",
-        599 => "Network connect timeout error"
+        598 => "Network Read Timeout Error",
+        599 => "Network Connect Timeout Error"
     ];
 
     /**
