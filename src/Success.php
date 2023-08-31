@@ -2,6 +2,8 @@
 
 namespace Saboohy\HttpStatus;
 
+use Saboohy\HttpStatus\EnumReflector;
+
 /**
  * Successful responses
  * 
@@ -10,16 +12,39 @@ namespace Saboohy\HttpStatus;
  * @author      Sabuhi Alizada <sabuhi.alizada@yahoo.com>
  * @license     MIT
  */
-final class Success
+enum Success: int
 {
-    public const OK = 200;
-    public const CREATED = 201;
-    public const ACCEPTED = 202;
-    public const NON_AUTHORITATIVE_INFORMATION = 203;
-    public const NO_CONTENT = 204;
-    public const RESET_CONTENT = 205;
-    public const PARTIAL_CONTENT = 206;
-    public const MULTI_STATUS = 207;
-    public const ALREADY_REPORTED = 208;
-    public const IM_USED = 226;
+    use EnumReflector;
+    
+    case OK = 200;
+    case CREATED = 201;
+    case ACCEPTED = 202;
+    case NON_AUTHORITATIVE_INFORMATION = 203;
+    case NO_CONTENT = 204;
+    case RESET_CONTENT = 205;
+    case PARTIAL_CONTENT = 206;
+    case MULTI_STATUS = 207;
+    case ALREADY_REPORTED = 208;
+    case IM_USED = 226;
+
+    /**
+     * Returns message by case
+     * 
+     * @return string
+     */
+    public function message(): string
+    {
+        return match($this) {
+            Success::OK => "OK",
+            Success::CREATED => "Created",
+            Success::ACCEPTED => "Accepted",
+            Success::NON_AUTHORITATIVE_INFORMATION => "Non-Authoritative Information",
+            Success::NO_CONTENT => "No Content",
+            Success::RESET_CONTENT => "Reset Content",
+            Success::PARTIAL_CONTENT => "Partial Content",
+            Success::MULTI_STATUS => "Multi-Status",
+            Success::ALREADY_REPORTED => "Already Reported",
+            Success::IM_USED => "IM Used"
+        };
+    }
 }
