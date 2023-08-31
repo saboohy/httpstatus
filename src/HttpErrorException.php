@@ -2,7 +2,11 @@
 
 namespace Saboohy\HttpStatus;
 
-use Saboohy\HttpStatus\Message;
+use Saboohy\HttpStatus\{
+    Client,
+    Server
+};
+use function in_array;
 
 /**
  * HttpException handler
@@ -17,19 +21,20 @@ class HttpErrorException extends \Exception
     /**
      * Constructor
      * 
-     * @param int $http_status_code
+     * @param int $status
      * 
      * @return void
      */
-    public function __construct(int $http_status_code)
+    public function __construct(object $status = null)
     {
-        $http_status_code = (
-            ($http_status_code >= 400 && $http_status_code < 600) 
-            ? $http_status_code 
-            : 0
-        );
+        $message = "Unexpected HTTP Error";
+        $code = 0;
+
+        if ( in_array($status->getObjectName(), ["Client", "Server"]) ) {
+            $message = $status->message();
+            $code = $status->value;
+        }
         
-        $message = Message::get($http_status_code);
-        parent::__construct($message, $http_status_code);
+        parent::__construct($message , $code);
     }
 }
