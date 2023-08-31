@@ -2,6 +2,8 @@
 
 namespace Saboohy\HttpStatus;
 
+use Saboohy\HttpStatus\EnumReflector;
+
 /**
  * Redirection messages
  * 
@@ -10,13 +12,33 @@ namespace Saboohy\HttpStatus;
  * @author      Sabuhi Alizada <sabuhi.alizada@yahoo.com>
  * @license     MIT
  */
-final class Redirect
+enum Redirect: int
 {
-    public const MULTIPLE_CHOICES = 300;
-    public const MOVED_PERMANENTLY = 301;
-    public const FOUND = 302;
-    public const SEE_OTHER = 303;
-    public const NOT_MODIFIED = 304;
-    public const TEMPORARY_REDIRECT = 307;
-    public const PERMANENT_REDIRECT = 308;
+    use EnumReflector;
+    
+    case MULTIPLE_CHOICES = 300;
+    case MOVED_PERMANENTLY = 301;
+    case FOUND = 302;
+    case SEE_OTHER = 303;
+    case NOT_MODIFIED = 304;
+    case TEMPORARY_REDIRECT = 307;
+    case PERMANENT_REDIRECT = 308;
+
+    /**
+     * Returns message by case
+     * 
+     * @return string
+     */
+    public function message(): string
+    {
+        return match($this) {
+            Redirect::MULTIPLE_CHOICES => "Multiple Choices",
+            Redirect::MOVED_PERMANENTLY => "Moved Permanently",
+            Redirect::FOUND => "Found",
+            Redirect::SEE_OTHER => "See Other",
+            Redirect::NOT_MODIFIED => "Not Modified",
+            Redirect::TEMPORARY_REDIRECT => "Temporary Redirect",
+            Redirect::PERMANENT_REDIRECT => "Permanent Redirect"
+        };
+    }
 }
