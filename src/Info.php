@@ -2,6 +2,8 @@
 
 namespace Saboohy\HttpStatus;
 
+use Saboohy\HttpStatus\EnumReflector;
+
 /**
  * Informational responses
  * 
@@ -10,10 +12,27 @@ namespace Saboohy\HttpStatus;
  * @author      Sabuhi Alizada <sabuhi.alizada@yahoo.com>
  * @license     MIT
  */
-final class Info
+enum Info: int
 {
-    public const CONTINUE = 100;
-    public const SWITCHING_PROTOCOLS = 101;
-    public const PROCESSING = 102;
-    public const EARLY_HINTS = 103;
+    use EnumReflector;
+    
+    case CONTINUE = 100;
+    case SWITCHING_PROTOCOLS = 101;
+    case PROCESSING = 102;
+    case EARLY_HINTS = 103;
+
+    /**
+     * Returns message by case
+     * 
+     * @return string
+     */
+    public function message(): string
+    {
+        return match($this) {
+            Info::CONTINUE => "Continue",
+            Info::SWITCHING_PROTOCOLS => "Switching Protocols",
+            Info::PROCESSING => "Processing",
+            Info::EARLY_HINTS => "Early Hints"
+        };
+    }
 }
