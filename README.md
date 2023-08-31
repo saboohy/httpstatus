@@ -1,10 +1,10 @@
 # HttpStatus
 
-This is a PHP library for HTTP status codes, messages and error exception. Within the library, HTTP status codes are available in classes based on the section they belong to.
+This is a PHP library for HTTP status codes, messages and error exceptions.
 
 ## Requirements
 
-* PHP >= 7.4
+* PHP >= 8.1
 
 ## Installation
 
@@ -14,28 +14,24 @@ You can install the package via composer:
 composer require saboohy/httpstatus
 ```
 
-## Example
+## Usage
 
 ```php
-require 'vendor/autoload.php';
-
-use Saboohy\HttpStatus\Message;
 use Saboohy\HttpStatus\Success;
 
-echo Message::get(Success::OK);
+echo Success::OK->value;
+echo Success::OK->message();
 ```
 
-## Topics
+## Enums
 
-The **HttpStatus** package is arranged from 3 types of classes. Classes expressing status codes, class that returns messages according to codes and exception class.
+There are 5 enum objects in this library. **Info**, **Success**, **Redirect**, **Client** and **Server**.
 
 ### Informational Responses (1xx)
 
-Constants for informational responses are organized inside of `Info` class. You can use the class for status codes 100, 101, 102 and 103.
+Cases for informational responses are organized inside of **Info** enum.
 
-#### Constants
-
-| Constant            | Code |
+| Case                | Code |
 | ------------------- | ---- |
 | CONTINUE            | 100  |
 | SWITCHING_PROTOCOLS | 101  |
@@ -47,16 +43,14 @@ Constants for informational responses are organized inside of `Info` class. You 
 ```php
 use Saboohy\HttpStatus\Info;
 
-echo Info::CONTINUE;
+echo Info::CONTINUE->value;
 ```
 
 ### Successful Responses (2xx)
 
-Successful responses are organized inside of `Success` class. You can use the class for status codes 200, 201, 202, 203, 204, 205, 206, 207, 208 and 226.
+Successful responses are organized inside of **Success** enum.
 
-#### Constants
-
-| Constant                      | Code |
+| Case                          | Code |
 | ----------------------------- | ---- |
 | OK                            | 200  |
 | CREATED                       | 201  |
@@ -69,22 +63,19 @@ Successful responses are organized inside of `Success` class. You can use the cl
 | ALREADY_REPORTED              | 208  |
 | IM_USED                       | 226  |
 
-
 #### Usage
 
 ```php
 use Saboohy\HttpStatus\Success;
 
-echo Success::OK;
+echo Success::OK->value;
 ```
 
 ### Redirection Messages (3xx)
 
-Redirect responses are organized inside of `Redirect` class. You can use the class for status codes 300, 301, 302, 303, 304, 307 and 308.
+Redirect responses are organized inside of **Redirect** enum.
 
-#### Constants
-
-| Constant           | Code |
+| Case               | Code |
 | ------------------ | ---- |
 | MULTIPLE_CHOICES   | 300  |
 | MOVED_PERMANENTLY  | 301  |
@@ -99,16 +90,14 @@ Redirect responses are organized inside of `Redirect` class. You can use the cla
 ```php
 use Saboohy\HttpStatus\Redirect;
 
-echo Redirect::MULTIPLE_CHOICES;
+echo Redirect::MULTIPLE_CHOICES->value;
 ```
 
 ### Client Error Responses (4xx)
 
-Constants for client error responses are organized inside of `Client` class. You can use the class for status codes 400, 401, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 421, 422, 423, 424, 425, 426, 428, 429, 431 and 451.
+Cases for client error responses are organized inside of **Client** enum.
 
-#### Constants
-
-| Constant                        | Code |
+| Case                            | Code |
 | ------------------------------- | ---- |
 | BAD_REQUEST                     | 400  |
 | UNAUTHORIZED                    | 401  |
@@ -145,16 +134,14 @@ Constants for client error responses are organized inside of `Client` class. You
 ```php
 use Saboohy\HttpStatus\Client;
 
-echo Client::BAD_REQUEST;
+echo Client::BAD_REQUEST->value;
 ```
 
 ### Server Error Responses (5xx)
 
-Constants for server error responses are organized inside of `Server` class. You can use the class for status codes 500, 501, 502, 503, 504, 505, 506, 507, 508, 510 and 511.
+Cases for server error responses are organized inside of **Server** enum.
 
-#### Constants
-
-| Constant                        | Code |
+| Case                            | Code |
 | ------------------------------- | ---- |
 | INTERNAL_SERVER_ERROR           | 500  |
 | NOT_IMPLEMENTED                 | 501  |
@@ -170,38 +157,25 @@ Constants for server error responses are organized inside of `Server` class. You
 | NETWORK_READ_TIMEOUT_ERROR      | 598  |
 | NETWORK_CONNECT_TIMEOUT_ERROR   | 599  |
 
-
 #### Usage
 
 ```php
 use Saboohy\HttpStatus\Server;
 
-echo Server::INTERNAL_SERVER_ERROR;
+echo Server::INTERNAL_SERVER_ERROR->value;
 ```
 
-### Message
+## HttpErrorException
 
-"Message" class is used to receive the HTTP messages. It is possible to receive messages using the constants mentioned above to the `get` method present in it. The `get` method is **static**, takes a value of type integer and returns a result of type string. If any number not inside of the HTTP statuses is used, it will receive `0` and the equivalent of this value will be **"Status Not Found"**.
+This class is used for error exceptions. The "constructor" method of this class must receive a case of enum. Remember that the value you will give must be of type 4xx and 5xx.
 
-#### Usage
-
-```php
-use Saboohy\HttpStatus\Message;
-
-echo Message::get(404);
-```
-
-### HttpErrorException
-
-`HttpErrorException` class is used for error exceptions. The "constructor" method of this class must receive a value of type integer. It inherits from the `Exception` class,therefore you can get the value result set when using this class using the `getCode` method of the `Exception` class. Remember that the value you will give must be of type 4xx and 5xx.
-
-#### Usage
+### Usage
 
 ```php
-use Saboohy\HttpStatus\HttpErrorException;
 use Saboohy\HttpStatus\Client;
+use Saboohy\HttpStatus\HttpErrorException;
 
-throw new HttpErrorException(Client::NOT_FOUND);
+throw new HttpErrorException(Client::BAD_REQUEST);
 ```
 
 ## License
