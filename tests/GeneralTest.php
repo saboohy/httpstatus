@@ -14,364 +14,138 @@ namespace Saboohy\HttpStatus\Tests
 
     final class GeneralTest extends TestCase
     {
-        public function testDefault(): void
-        {
-            $this->assertSame(
-                Message::get(0),
-                "Status Not Found"
-            );
-        }
+        
 
         public function testInfoStatus(): void
         {
-            $this->assertSame(Info::CONTINUE, 100);
-            $this->assertSame(Info::SWITCHING_PROTOCOLS, 101);
-            $this->assertSame(Info::PROCESSING, 102);
-            $this->assertSame(Info::EARLY_HINTS, 103);
+            $this->assertSame(Info::CONTINUE->value, 100);
+            $this->assertSame(Info::SWITCHING_PROTOCOLS->value, 101);
+            $this->assertSame(Info::PROCESSING->value, 102);
+            $this->assertSame(Info::EARLY_HINTS->value, 103);
             
-            $this->assertSame(
-                Message::get(Info::CONTINUE),
-                "Continue"
-            );
-
-            $this->assertSame(
-                Message::get(Info::SWITCHING_PROTOCOLS),
-                "Switching Protocols"
-            );
-
-            $this->assertSame(
-                Message::get(Info::PROCESSING),
-                "Processing"
-            );
-
-            $this->assertSame(
-                Message::get(Info::EARLY_HINTS),
-                "Early Hints"
-            );
+            $this->assertSame(Info::CONTINUE->message(), "Continue");
+            $this->assertSame(Info::SWITCHING_PROTOCOLS->message(), "Switching Protocols");
+            $this->assertSame(Info::PROCESSING->message(), "Processing");
+            $this->assertSame(Info::EARLY_HINTS->message(), "Early Hints");
         }
 
         public function testSuccessStatus(): void
         {
-            $this->assertSame(Success::OK, 200);
-            $this->assertSame(Success::CREATED, 201);
-            $this->assertSame(Success::ACCEPTED, 202);
-            $this->assertSame(Success::NON_AUTHORITATIVE_INFORMATION, 203);
-            $this->assertSame(Success::NO_CONTENT, 204);
-            $this->assertSame(Success::RESET_CONTENT, 205);
-            $this->assertSame(Success::PARTIAL_CONTENT, 206);
-            $this->assertSame(Success::MULTI_STATUS, 207);
-            $this->assertSame(Success::ALREADY_REPORTED, 208);
-            $this->assertSame(Success::IM_USED, 226);
+            $this->assertSame(Success::OK->value, 200);
+            $this->assertSame(Success::CREATED->value, 201);
+            $this->assertSame(Success::ACCEPTED->value, 202);
+            $this->assertSame(Success::NON_AUTHORITATIVE_INFORMATION->value, 203);
+            $this->assertSame(Success::NO_CONTENT->value, 204);
+            $this->assertSame(Success::RESET_CONTENT->value, 205);
+            $this->assertSame(Success::PARTIAL_CONTENT->value, 206);
+            $this->assertSame(Success::MULTI_STATUS->value, 207);
+            $this->assertSame(Success::ALREADY_REPORTED->value, 208);
+            $this->assertSame(Success::IM_USED->value, 226);
 
-            $this->assertSame(
-                Message::get(Success::OK),
-                "OK"
-            );
-
-            $this->assertSame(
-                Message::get(Success::CREATED),
-                "Created"
-            );
-
-            $this->assertSame(
-                Message::get(Success::ACCEPTED),
-                "Accepted"
-            );
-
-            $this->assertSame(
-                Message::get(Success::NON_AUTHORITATIVE_INFORMATION),
-                "Non-Authoritative Information"
-            );
-
-            $this->assertSame(
-                Message::get(Success::NO_CONTENT),
-                "No Content"
-            );
-
-            $this->assertSame(
-                Message::get(Success::RESET_CONTENT),
-                "Reset Content"
-            );
-
-            $this->assertSame(
-                Message::get(Success::PARTIAL_CONTENT),
-                "Partial Content"
-            );
-
-            $this->assertSame(
-                Message::get(Success::MULTI_STATUS),
-                "Multi-Status"
-            );
-
-            $this->assertSame(
-                Message::get(Success::ALREADY_REPORTED),
-                "Already Reported"
-            );
-
-            $this->assertSame(
-                Message::get(Success::IM_USED),
-                "IM Used"
-            );
+            $this->assertSame(Success::OK->message(), "OK");
+            $this->assertSame(Success::CREATED->message(), "Created");
+            $this->assertSame(Success::ACCEPTED->message(), "Accepted");
+            $this->assertSame(Success::NON_AUTHORITATIVE_INFORMATION->message(), "Non-Authoritative Information");
+            $this->assertSame(Success::NO_CONTENT->message(), "No Content");
+            $this->assertSame(Success::RESET_CONTENT->message(), "Reset Content");
+            $this->assertSame(Success::PARTIAL_CONTENT->message(), "Partial Content");
+            $this->assertSame(Success::MULTI_STATUS->message(), "Multi-Status");
+            $this->assertSame(Success::ALREADY_REPORTED->message(), "Already Reported");
+            $this->assertSame(Success::IM_USED->message(), "IM Used");
         }
 
         public function testClientStatus(): void
         {
-            $this->assertSame(Client::BAD_REQUEST, 400);
-            $this->assertSame(Client::UNAUTHORIZED, 401);
-            $this->assertSame(Client::FORBIDDEN, 403);
-            $this->assertSame(Client::NOT_FOUND, 404);
-            $this->assertSame(Client::METHOD_NOT_ALLOWED, 405);
-            $this->assertSame(Client::NOT_ACCEPTABLE, 406);
-            $this->assertSame(Client::PROXY_AUTHENTICATION_REQUIRED, 407);
-            $this->assertSame(Client::REQUEST_TIMEOUT, 408);
-            $this->assertSame(Client::CONFLICT, 409);
-            $this->assertSame(Client::GONE, 410);
-            $this->assertSame(Client::LENGTH_REQUIRED, 411);
-            $this->assertSame(Client::PRECONDITION_FAILED, 412);
-            $this->assertSame(Client::PAYLOAD_TOO_LARGE, 413);
-            $this->assertSame(Client::URI_TOO_LONG, 414);
-            $this->assertSame(Client::UNSUPPORTED_MEDIA_TYPE, 415);
-            $this->assertSame(Client::RANGE_NOT_SATISFIABLE, 416);
-            $this->assertSame(Client::EXPECTATION_FAILED, 417);
-            $this->assertSame(Client::IM_A_TEAPOT, 418);
-            $this->assertSame(Client::MISDIRECTED_REQUEST, 421);
-            $this->assertSame(Client::UNPROCESSABLE_ENTITY, 422);
-            $this->assertSame(Client::LOCKED, 423);
-            $this->assertSame(Client::FAILED_DEPENDENCY, 424);
-            $this->assertSame(Client::TOO_EARLY, 425);
-            $this->assertSame(Client::UPGRADE_REQUIRED, 426);
-            $this->assertSame(Client::PRECONDITION_REQUIRED, 428);
-            $this->assertSame(Client::TOO_MANY_REQUESTS, 429);
-            $this->assertSame(Client::REQUEST_HEADER_FIELDS_TOO_LARGE, 431);
-            $this->assertSame(Client::UNAVAILABLE_FOR_LEGAL_REASONS, 451);
-            $this->assertSame(Client::CLIENT_CLOSED_REQUEST, 499);
+            $this->assertSame(Client::BAD_REQUEST->value, 400);
+            $this->assertSame(Client::UNAUTHORIZED->value, 401);
+            $this->assertSame(Client::FORBIDDEN->value, 403);
+            $this->assertSame(Client::NOT_FOUND->value, 404);
+            $this->assertSame(Client::METHOD_NOT_ALLOWED->value, 405);
+            $this->assertSame(Client::NOT_ACCEPTABLE->value, 406);
+            $this->assertSame(Client::PROXY_AUTHENTICATION_REQUIRED->value, 407);
+            $this->assertSame(Client::REQUEST_TIMEOUT->value, 408);
+            $this->assertSame(Client::CONFLICT->value, 409);
+            $this->assertSame(Client::GONE->value, 410);
+            $this->assertSame(Client::LENGTH_REQUIRED->value, 411);
+            $this->assertSame(Client::PRECONDITION_FAILED->value, 412);
+            $this->assertSame(Client::PAYLOAD_TOO_LARGE->value, 413);
+            $this->assertSame(Client::URI_TOO_LONG->value, 414);
+            $this->assertSame(Client::UNSUPPORTED_MEDIA_TYPE->value, 415);
+            $this->assertSame(Client::RANGE_NOT_SATISFIABLE->value, 416);
+            $this->assertSame(Client::EXPECTATION_FAILED->value, 417);
+            $this->assertSame(Client::IM_A_TEAPOT->value, 418);
+            $this->assertSame(Client::MISDIRECTED_REQUEST->value, 421);
+            $this->assertSame(Client::UNPROCESSABLE_ENTITY->value, 422);
+            $this->assertSame(Client::LOCKED->value, 423);
+            $this->assertSame(Client::FAILED_DEPENDENCY->value, 424);
+            $this->assertSame(Client::TOO_EARLY->value, 425);
+            $this->assertSame(Client::UPGRADE_REQUIRED->value, 426);
+            $this->assertSame(Client::PRECONDITION_REQUIRED->value, 428);
+            $this->assertSame(Client::TOO_MANY_REQUESTS->value, 429);
+            $this->assertSame(Client::REQUEST_HEADER_FIELDS_TOO_LARGE->value, 431);
+            $this->assertSame(Client::UNAVAILABLE_FOR_LEGAL_REASONS->value, 451);
+            $this->assertSame(Client::CLIENT_CLOSED_REQUEST->value, 499);
 
-            $this->assertSame(
-                Message::get(Client::BAD_REQUEST),
-                "Bad Request"
-            );
-
-            $this->assertSame(
-                Message::get(Client::UNAUTHORIZED),
-                "Unauthorized"
-            );
-
-            $this->assertSame(
-                Message::get(Client::FORBIDDEN),
-                "Forbidden"
-            );
-
-            $this->assertSame(
-                Message::get(Client::NOT_FOUND),
-                "Not Found"
-            );
-
-            $this->assertSame(
-                Message::get(Client::METHOD_NOT_ALLOWED),
-                "Method Not Allowed"
-            );
-
-            $this->assertSame(
-                Message::get(Client::NOT_ACCEPTABLE),
-                "Not Acceptable"
-            );
-
-            $this->assertSame(
-                Message::get(Client::PROXY_AUTHENTICATION_REQUIRED),
-                "Proxy Authentication Required"
-            );
-
-            $this->assertSame(
-                Message::get(Client::REQUEST_TIMEOUT),
-                "Request Timeout"
-            );
-
-            $this->assertSame(
-                Message::get(Client::CONFLICT),
-                "Conflict"
-            );
-
-            $this->assertSame(
-                Message::get(Client::GONE),
-                "Gone"
-            );
-
-            $this->assertSame(
-                Message::get(Client::LENGTH_REQUIRED),
-                "Length Required"
-            );
-
-            $this->assertSame(
-                Message::get(Client::PRECONDITION_FAILED),
-                "Precondition Failed"
-            );
-
-            $this->assertSame(
-                Message::get(Client::PAYLOAD_TOO_LARGE),
-                "Payload Too Large"
-            );
-
-            $this->assertSame(
-                Message::get(Client::URI_TOO_LONG),
-                "URI Too Long"
-            );
-
-            $this->assertSame(
-                Message::get(Client::UNSUPPORTED_MEDIA_TYPE),
-                "Unsupported Media Type"
-            );
-
-            $this->assertSame(
-                Message::get(Client::RANGE_NOT_SATISFIABLE),
-                "Range Not Satisfiable"
-            );
-
-            $this->assertSame(
-                Message::get(Client::EXPECTATION_FAILED),
-                "Expectation Failed"
-            );
-
-            $this->assertSame(
-                Message::get(Client::IM_A_TEAPOT),
-                "I'm a teapot"
-            );
-
-            $this->assertSame(
-                Message::get(Client::MISDIRECTED_REQUEST),
-                "Misdirected Request"
-            );
-
-            $this->assertSame(
-                Message::get(Client::UNPROCESSABLE_ENTITY),
-                "Unprocessable Entity"
-            );
-
-            $this->assertSame(
-                Message::get(Client::LOCKED),
-                "Locked"
-            );
-
-            $this->assertSame(
-                Message::get(Client::FAILED_DEPENDENCY),
-                "Failed Dependency"
-            );
-
-            $this->assertSame(
-                Message::get(Client::TOO_EARLY),
-                "Too Early"
-            );
-
-            $this->assertSame(
-                Message::get(Client::UPGRADE_REQUIRED),
-                "Upgrade Required"
-            );
-
-            $this->assertSame(
-                Message::get(Client::PRECONDITION_REQUIRED),
-                "Precondition Required"
-            );
-
-            $this->assertSame(
-                Message::get(Client::TOO_MANY_REQUESTS),
-                "Too Many Requests"
-            );
-
-            $this->assertSame(
-                Message::get(Client::REQUEST_HEADER_FIELDS_TOO_LARGE),
-                "Request Header Fields Too Large"
-            );
-
-            $this->assertSame(
-                Message::get(Client::UNAVAILABLE_FOR_LEGAL_REASONS),
-                "Unavailable For Legal Reasons"
-            );
-
-            $this->assertSame(
-                Message::get(Client::CLIENT_CLOSED_REQUEST),
-                "Client Closed Request"
-            );
+            $this->assertSame(Client::BAD_REQUEST->message(), "Bad Request");
+            $this->assertSame(Client::UNAUTHORIZED->message(), "Unauthorized");
+            $this->assertSame(Client::FORBIDDEN->message(), "Forbidden");
+            $this->assertSame(Client::NOT_FOUND->message(), "Not Found");
+            $this->assertSame(Client::METHOD_NOT_ALLOWED->message(), "Method Not Allowed");
+            $this->assertSame(Client::NOT_ACCEPTABLE->message(), "Not Acceptable");
+            $this->assertSame(Client::PROXY_AUTHENTICATION_REQUIRED->message(), "Proxy Authentication Required");
+            $this->assertSame(Client::REQUEST_TIMEOUT->message(), "Request Timeout");
+            $this->assertSame(Client::CONFLICT->message(), "Conflict");
+            $this->assertSame(Client::GONE->message(), "Gone");
+            $this->assertSame(Client::LENGTH_REQUIRED->message(), "Length Required");
+            $this->assertSame(Client::PRECONDITION_FAILED->message(), "Precondition Failed");
+            $this->assertSame(Client::PAYLOAD_TOO_LARGE->message(), "Payload Too Large");
+            $this->assertSame(Client::URI_TOO_LONG->message(), "URI Too Long");
+            $this->assertSame(Client::UNSUPPORTED_MEDIA_TYPE->message(), "Unsupported Media Type");
+            $this->assertSame(Client::RANGE_NOT_SATISFIABLE->message(), "Range Not Satisfiable");
+            $this->assertSame(Client::EXPECTATION_FAILED->message(), "Expectation Failed");
+            $this->assertSame(Client::IM_A_TEAPOT->message(), "I'm a teapot");
+            $this->assertSame(Client::MISDIRECTED_REQUEST->message(), "Misdirected Request");
+            $this->assertSame(Client::UNPROCESSABLE_ENTITY->message(), "Unprocessable Entity");
+            $this->assertSame(Client::LOCKED->message(), "Locked");
+            $this->assertSame(Client::FAILED_DEPENDENCY->message(), "Failed Dependency");
+            $this->assertSame(Client::TOO_EARLY->message(), "Too Early");
+            $this->assertSame(Client::UPGRADE_REQUIRED->message(), "Upgrade Required");
+            $this->assertSame(Client::PRECONDITION_REQUIRED->message(), "Precondition Required");
+            $this->assertSame(Client::TOO_MANY_REQUESTS->message(), "Too Many Requests");
+            $this->assertSame(Client::REQUEST_HEADER_FIELDS_TOO_LARGE->message(), "Request Header Fields Too Large");
+            $this->assertSame(Client::UNAVAILABLE_FOR_LEGAL_REASONS->message(), "Unavailable For Legal Reasons");
+            $this->assertSame(Client::CLIENT_CLOSED_REQUEST->message(), "Client Closed Request");
         }
 
         public function testServerStatus(): void
         {
-            $this->assertSame(Server::INTERNAL_SERVER_ERROR, 500);
-            $this->assertSame(Server::NOT_IMPLEMENTED, 501);
-            $this->assertSame(Server::BAD_GATEWAY, 502);
-            $this->assertSame(Server::SERVICE_UNAVAILABLE, 503);
-            $this->assertSame(Server::GATEWAY_TIMEOUT, 504);
-            $this->assertSame(Server::HTTP_VERSION_NOT_SUPPORTED, 505);
-            $this->assertSame(Server::VARIANT_ALSO_NEGOTIATES, 506);
-            $this->assertSame(Server::INSUFFICIENT_STORAGE, 507);
-            $this->assertSame(Server::LOOP_DETECTED, 508);
-            $this->assertSame(Server::NOT_EXTENDED, 510);
-            $this->assertSame(Server::NETWORK_AUTHENTICATION_REQUIRED, 511);
-            $this->assertSame(Server::NETWORK_READ_TIMEOUT_ERROR, 598);
-            $this->assertSame(Server::NETWORK_CONNECT_TIMEOUT_ERROR, 599);
+            $this->assertSame(Server::INTERNAL_SERVER_ERROR->value, 500);
+            $this->assertSame(Server::NOT_IMPLEMENTED->value, 501);
+            $this->assertSame(Server::BAD_GATEWAY->value, 502);
+            $this->assertSame(Server::SERVICE_UNAVAILABLE->value, 503);
+            $this->assertSame(Server::GATEWAY_TIMEOUT->value, 504);
+            $this->assertSame(Server::HTTP_VERSION_NOT_SUPPORTED->value, 505);
+            $this->assertSame(Server::VARIANT_ALSO_NEGOTIATES->value, 506);
+            $this->assertSame(Server::INSUFFICIENT_STORAGE->value, 507);
+            $this->assertSame(Server::LOOP_DETECTED->value, 508);
+            $this->assertSame(Server::NOT_EXTENDED->value, 510);
+            $this->assertSame(Server::NETWORK_AUTHENTICATION_REQUIRED->value, 511);
+            $this->assertSame(Server::NETWORK_READ_TIMEOUT_ERROR->value, 598);
+            $this->assertSame(Server::NETWORK_CONNECT_TIMEOUT_ERROR->value, 599);
 
-            $this->assertSame(
-                Message::get(Server::INTERNAL_SERVER_ERROR),
-                "Internal Server Error"
-            );
-
-            $this->assertSame(
-                Message::get(Server::NOT_IMPLEMENTED),
-                "Not Implemented"
-            );
-
-            $this->assertSame(
-                Message::get(Server::BAD_GATEWAY),
-                "Bad Gateway"
-            );
-
-            $this->assertSame(
-                Message::get(Server::SERVICE_UNAVAILABLE),
-                "Service Unavailable"
-            );
-
-            $this->assertSame(
-                Message::get(Server::GATEWAY_TIMEOUT),
-                "Gateway Timeout"
-            );
-
-            $this->assertSame(
-                Message::get(Server::HTTP_VERSION_NOT_SUPPORTED),
-                "HTTP Version Not Supported"
-            );
-
-            $this->assertSame(
-                Message::get(Server::VARIANT_ALSO_NEGOTIATES),
-                "Variant Also Negotiates"
-            );
-
-            $this->assertSame(
-                Message::get(Server::INSUFFICIENT_STORAGE),
-                "Insufficient Storage"
-            );
-
-            $this->assertSame(
-                Message::get(Server::LOOP_DETECTED),
-                "Loop Detected"
-            );
-
-            $this->assertSame(
-                Message::get(Server::NOT_EXTENDED),
-                "Not Extended"
-            );
-
-            $this->assertSame(
-                Message::get(Server::NETWORK_AUTHENTICATION_REQUIRED),
-                "Network Authentication Required"
-            );
-
-            $this->assertSame(
-                Message::get(Server::NETWORK_READ_TIMEOUT_ERROR),
-                "Network Read Timeout Error"
-            );
-
-            $this->assertSame(
-                Message::get(Server::NETWORK_CONNECT_TIMEOUT_ERROR),
-                "Network Connect Timeout Error"
-            );
+            $this->assertSame(Server::INTERNAL_SERVER_ERROR->message(), "Internal Server Error");
+            $this->assertSame(Server::NOT_IMPLEMENTED->message(), "Not Implemented");
+            $this->assertSame(Server::BAD_GATEWAY->message(), "Bad Gateway");
+            $this->assertSame(Server::SERVICE_UNAVAILABLE->message(), "Service Unavailable");
+            $this->assertSame(Server::GATEWAY_TIMEOUT->message(), "Gateway Timeout");
+            $this->assertSame(Server::HTTP_VERSION_NOT_SUPPORTED->message(), "HTTP Version Not Supported");
+            $this->assertSame(Server::VARIANT_ALSO_NEGOTIATES->message(), "Variant Also Negotiates");
+            $this->assertSame(Server::INSUFFICIENT_STORAGE->message(), "Insufficient Storage");
+            $this->assertSame(Server::LOOP_DETECTED->message(), "Loop Detected");
+            $this->assertSame(Server::NOT_EXTENDED->message(), "Not Extended");
+            $this->assertSame(Server::NETWORK_AUTHENTICATION_REQUIRED->message(), "Network Authentication Required");
+            $this->assertSame(Server::NETWORK_READ_TIMEOUT_ERROR->message(), "Network Read Timeout Error");
+            $this->assertSame(Server::NETWORK_CONNECT_TIMEOUT_ERROR->message(), "Network Connect Timeout Error");
         }
     }
 }
